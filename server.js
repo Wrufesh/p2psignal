@@ -10,6 +10,12 @@ workspace.on("connection", (socket) => {
     userId: socket.userId,
   });
 
+  socket.on('webrtc_signal', (data) => {
+    workspace
+    .to(data.target)
+    .emit(data.type, data.signal);  
+  })
+
   workspace
     .to(socket.id)
     .emit("my id", { socketId: socket.id, userId: socket.userId });
