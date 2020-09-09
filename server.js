@@ -1,5 +1,7 @@
 const io = require("socket.io")();
 
+io.origins('*:*');
+
 const workspace = io.of(/^\/\w+$/);
 
 workspace.on("connection", (socket) => {
